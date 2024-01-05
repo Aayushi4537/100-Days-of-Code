@@ -1,0 +1,52 @@
+//First and last position of element in sorted array
+//Binary Search
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target){
+        vector<int> ans;
+        int n = nums.size();
+        int s=0; 
+        int e=n-1;
+        int m= s+((e-s)/2);
+        int ans1=-1;
+        int ans2=-1;
+        while(s<=e){
+            //First occurence
+            if(nums[m]==target){
+                ans1=m;
+                e=m-1;
+            }
+            else if(nums[m]<target){
+                s=m+1;
+               
+            }
+            else if(nums[m]>target){
+                e=m-1;
+            }
+            m= s+((e-s)/2);
+        }
+        
+        s=0; 
+        e=n-1;
+        m= s+((e-s)/2);
+        
+        while(s<=e){
+            //Last occurence
+            if(nums[m]==target){
+                ans2=m;
+                s=m+1;
+            }
+            else if(nums[m]<target){
+                s=m+1;
+            }
+            else if(nums[m]>target){
+                e=m-1;
+            }
+            m= s+((e-s)/2);
+        }
+        ans.push_back(ans1);
+        ans.push_back(ans2);
+        return ans;
+    }     
+};
+//We can solve this problem by Linear search also, with two for loops for two occurence. One will be incrementing and othe will decrementing from behind
