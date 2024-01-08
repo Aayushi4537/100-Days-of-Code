@@ -1,4 +1,4 @@
-//Linera search
+//Linear search
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
